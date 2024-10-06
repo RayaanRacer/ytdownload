@@ -8,13 +8,13 @@ app.use(cors());
 app.use(express.json());
 
 app.post("/proxy", async (req, res) => {
-  const { videoid } = req.body;
+  const { videoid, downtype = "mp3", vquality = "320" } = req.body;
 
   // Create form data
   const formData = new FormData();
   formData.append("videoid", videoid);
-  formData.append("downtype", "mp3");
-  formData.append("vquality", "320");
+  formData.append("downtype", downtype);
+  formData.append("vquality", vquality);
 
   try {
     // Make POST request using axios with form data
